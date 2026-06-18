@@ -2,9 +2,9 @@
 /* COLOR PALETTE */
 /* ==================== */
 :root {
-    --primary-color: #2563eb;      /* Blue - Confiance, technologie */
-    --secondary-color: #1e40af;    /* Darker Blue */
-    --accent-color: #f59e0b;       /* Amber - CTA, accent */
+    --primary-color: #001a4d;      /* Navy Deep Blue - Technologie */
+    --secondary-color: #003399;    /* Royal Blue - Innovation */
+    --accent-color: #00E5FF;       /* Electric Cyan - Innovation accent */
     --text-dark: #1f2937;          /* Dark Gray */
     --text-light: #6b7280;         /* Medium Gray */
     --bg-light: #f9fafb;           /* Very Light Gray */
@@ -148,30 +148,86 @@ p {
 .hero {
     background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
     color: var(--white);
-    padding: 6rem 0;
-    min-height: 600px;
+    padding: 5rem 0;
+    min-height: 700px;
     display: flex;
-    align-items: center;
+    align-items: left;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -10%;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(0, 229, 255, 0.1) 0%, transparent 70%);
+    border-radius: 100%;
+    pointer-events: none;
+}
+
+.hero::after {
+    content: '';
+    position: absolute;
+    bottom: -30%;
+    right: -10%;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(0, 229, 255, 0.08) 0%, transparent 70%);
+    border-radius: 100%;
+    pointer-events: none;
+}
+
+.hero .container {
+    position: absolute;
+    z-index: 1;
 }
 
 .hero-content {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 2rem;
+    gap: 3rem;
     width: 100%;
 }
 
+.hero-left {
+    flex: 2;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 2rem;
+}
+
 .hero-text {
-    flex: 1 1 60%;
-    min-width: 260px;
+    flex: 1;
 }
 
 .hero-image {
-    flex: 0 0 240px; /* fixed column for the image on the right */
     display: flex;
     align-items: center;
-    justify-content: flex-end; /* push image to the right side of that column */
+    justify-content: flex-start;
+}
+
+.hero-right {
+    flex: 0 0 30px;
+    display: flex;
+    align-items: right;
+    justify-content: right;
+    position: absolute;
+    right: -575px;
+    width: 500px;
+    height: 300px;
+}
+
+.hero-gif {
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+    border-radius: 0.5rem;
+    box-shadow: 0 20px 40px rgba(0, 229, 255, 0.2);
 }
 
 .hero-text h1 {
@@ -626,6 +682,16 @@ p {
         text-align: center;
     }
 
+    .hero-left {
+        align-items: center;
+        text-align: center;
+    }
+
+    .hero-right {
+        flex: auto;
+        margin-top: 2rem;
+    }
+
     .hero-text {
         max-width: 100%;
     }
@@ -671,3 +737,14 @@ p {
         grid-template-columns: 1fr;
     }
 }
+
+.hamburger.active span:nth-child(1) {
+    transform: rotate(-45deg) translate(-5px, 6px);
+}
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+.hamburger.active span:nth-child(3) {
+    transform: rotate(45deg) translate(-5px, -6px);
+}
+
